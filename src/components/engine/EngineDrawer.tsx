@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { X, RefreshCw, SlidersHorizontal } from "lucide-react";
+import Link from "next/link";
+import { X, RefreshCw, SlidersHorizontal, ArrowRight } from "lucide-react";
 import { LatencyMonitor } from "./LatencyMonitor";
 import { FanRushSimulator } from "./FanRushSimulator";
 import { LiveDocViewer } from "./LiveDocViewer";
@@ -92,6 +93,29 @@ export const EngineDrawer: React.FC<EngineDrawerProps> = ({
 
             {/* 3. Live Couchbase Document Viewer */}
             <LiveDocViewer seat={targetSeat} casToken={casToken} />
+
+            {/* 4. Architecture Deep-Dive Link */}
+            <div className="pt-2 border-t border-hairline-soft">
+              <Link
+                href="/db-architecture"
+                className="group flex items-center justify-between p-3.5 rounded-xl bg-surface-soft hover:bg-canvas border border-hairline hover:border-accent/40 transition-all shadow-subtle hover:shadow-float"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center font-semibold text-xs shrink-0">
+                    CB
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs font-semibold text-ink flex items-center gap-1.5 group-hover:text-accent transition-colors">
+                      <span>ดูพิมพ์เขียวสถาปัตยกรรม Couchbase Blueprint</span>
+                      <ArrowRight className="w-3.5 h-3.5 shrink-0 transform group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                    <p className="text-[11px] text-ink-muted truncate">
+                      ทำความรู้จัก Couchbase, Memory-First, CAS Token, TTL และ N1QL
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </div>
           </div>
 
           {/* Drawer Footer Actions */}

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArchitectureHeader } from "@/components/architecture/ArchitectureHeader";
+import { CouchbaseWhatIsSection } from "@/components/architecture/CouchbaseWhatIsSection";
 import { FocalDiagram } from "@/components/architecture/FocalDiagram";
 import { CollectionSchemaCard } from "@/components/architecture/CollectionSchemaCard";
 import { CasLifecycleDiagram } from "@/components/architecture/CasLifecycleDiagram";
@@ -25,8 +26,8 @@ import {
 
 export default function DbArchitecturePage() {
   const [activeSection, setActiveSection] = useState<
-    "diagram" | "schema" | "cas" | "gsi" | "comparison"
-  >("diagram");
+    "whatis" | "diagram" | "schema" | "cas" | "gsi" | "comparison"
+  >("whatis");
   const [selectedCollectionId, setSelectedCollectionId] = useState<string>("seats");
   const [isPresentationMode, setIsPresentationMode] = useState<boolean>(false);
   const [clusterStats, setClusterStats] = useState<any>(null);
@@ -57,6 +58,28 @@ export default function DbArchitecturePage() {
     fetchClusterStats();
   }, [fetchClusterStats]);
 
+  const handleSelectSection = (
+    section: "whatis" | "diagram" | "schema" | "cas" | "gsi" | "comparison"
+  ) => {
+    setActiveSection(section);
+    const targetEl = document.getElementById(
+      section === "whatis"
+        ? "what-is-couchbase-section"
+        : section === "diagram"
+        ? "diagram-section"
+        : section === "schema"
+        ? "schema-section"
+        : section === "cas"
+        ? "cas-section"
+        : section === "gsi"
+        ? "gsi-section"
+        : "comparison-section"
+    );
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const handleSelectCollectionFromDiagram = (colId: string) => {
     setSelectedCollectionId(colId);
     setActiveSection("schema");
@@ -76,7 +99,7 @@ export default function DbArchitecturePage() {
       {/* Top Header */}
       <ArchitectureHeader
         activeSection={activeSection}
-        onSelectSection={setActiveSection}
+        onSelectSection={handleSelectSection}
         isPresentationMode={isPresentationMode}
         onTogglePresentationMode={() => setIsPresentationMode((prev) => !prev)}
         clusterStats={clusterStats}
@@ -85,7 +108,7 @@ export default function DbArchitecturePage() {
       />
 
       {/* Main Presentation Stage */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-10">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-12">
         {/* Editorial Sub-Hero Banner */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-hairline-soft">
           <div className="space-y-1.5 max-w-3xl">
@@ -137,6 +160,9 @@ export default function DbArchitecturePage() {
 
         {/* Live Metrics Summary Bar */}
         <DatabaseMetricsSummary clusterStats={clusterStats} />
+
+        {/* Section 00: What is Couchbase? Architecture Introduction */}
+        <CouchbaseWhatIsSection />
 
         {/* Section 01: The Focal Architecture Diagram */}
         <section id="diagram-section" className="space-y-4">
