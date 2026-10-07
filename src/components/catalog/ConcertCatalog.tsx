@@ -11,6 +11,18 @@ interface ConcertCatalogProps {
   onOpenEngineDrawer: () => void;
 }
 
+const formatDateBrief = (dateStr: string) => {
+  if (!dateStr) return "";
+  const parts = dateStr.trim().split(/\s+/);
+  if (parts.length >= 4) {
+    const day = parts[1];
+    const month = parts[2].includes("พฤศจิกายน") ? "พ.ย." : parts[2];
+    const year = parts[3];
+    return `${day} ${month} ${year}`;
+  }
+  return dateStr;
+};
+
 export const ConcertCatalog: React.FC<ConcertCatalogProps> = ({
   concerts,
   onSelectConcertToBook,
@@ -183,7 +195,7 @@ export const ConcertCatalog: React.FC<ConcertCatalogProps> = ({
                   {/* Row 1: Venue & Date */}
                   <div className="flex items-center justify-between text-xs text-ink-muted">
                     <span className="font-normal truncate">{concert.venue}</span>
-                    <span className="font-normal shrink-0 ml-2">{concert.date.split(" ")[2]} พ.ย. 2026</span>
+                    <span className="font-normal shrink-0 ml-2">{formatDateBrief(concert.date)}</span>
                   </div>
 
                   {/* Row 2: Headline / Title */}

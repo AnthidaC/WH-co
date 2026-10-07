@@ -46,22 +46,22 @@ export const GsiIndexViewer: React.FC = () => {
 
       {/* Rationale Comparison Callout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="p-4 rounded-xl border border-hairline bg-surface-soft/60 space-y-2 text-xs">
+        <div className="p-5 rounded-xl border border-hairline bg-surface-soft/60 space-y-2.5 text-sm">
           <div className="flex items-center space-x-2">
             <Zap className="w-4 h-4 text-primary" />
-            <h4 className="font-semibold text-ink text-sm">การกดบัตรความเร็วสูง (Rush Hold)</h4>
+            <h4 className="font-bold text-ink text-sm sm:text-base">การกดบัตรความเร็วสูง (Rush Hold)</h4>
           </div>
-          <p className="text-ink-body leading-relaxed">
+          <p className="text-ink leading-relaxed text-xs sm:text-sm">
             ใช้ <strong>Key-Value Direct Access</strong> ด้วย Deterministic Key เช่น <code>seat::fujii-kaze-bkk::VIP-01</code> ไม่ต้องพึ่งพา Index Engine จึงได้ความเร็วระดับ Sub-millisecond (&lt; 0.5 ms) โดยตรงจาก RAM
           </p>
         </div>
 
-        <div className="p-4 rounded-xl border border-hairline bg-surface-soft/60 space-y-2 text-xs">
+        <div className="p-5 rounded-xl border border-hairline bg-surface-soft/60 space-y-2.5 text-sm">
           <div className="flex items-center space-x-2">
             <Search className="w-4 h-4 text-emerald-600" />
-            <h4 className="font-semibold text-ink text-sm">การโหลดผังที่นั่ง &amp; ประวัติตั๋ว (Seatmap &amp; Orders)</h4>
+            <h4 className="font-bold text-ink text-sm sm:text-base">การโหลดผังที่นั่ง &amp; ประวัติตั๋ว (Seatmap &amp; Orders)</h4>
           </div>
-          <p className="text-ink-body leading-relaxed">
+          <p className="text-ink leading-relaxed text-xs sm:text-sm">
             ใช้ <strong>SQL++ (N1QL) ผ่าน Covered GSI Index</strong> สแกนเฉพาะ B-Tree Index ที่ตรงกับ <code>concertId</code> และ <code>zone</code> โดยไม่ต้องดึง Document ตัวเต็ม ประหยัดแบนด์วิดท์มหาศาล
           </p>
         </div>

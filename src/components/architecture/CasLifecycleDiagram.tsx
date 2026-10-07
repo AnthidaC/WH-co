@@ -150,19 +150,19 @@ export const CasLifecycleDiagram: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 items-start">
           <div className="space-y-4">
             <div>
-              <h5 className="text-xs uppercase font-semibold text-ink-muted tracking-wider mb-1">
+              <h5 className="text-xs uppercase font-bold text-ink-muted tracking-wider mb-1.5">
                 พฤติกรรมในระบบ (System Behavior)
               </h5>
-              <p className="text-xs sm:text-sm text-ink-body leading-relaxed">
+              <p className="text-sm sm:text-base text-ink leading-relaxed">
                 {activeStep.descriptionTh}
               </p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-canvas border border-hairline space-y-2 text-xs">
-              <span className="font-semibold text-ink block text-[11px] uppercase tracking-wider">
+            <div className="p-4 rounded-xl bg-canvas border border-hairline space-y-2 text-sm">
+              <span className="font-bold text-ink block text-xs uppercase tracking-wider">
                 ทำไมวิธีนี้จึงเร็วกว่าฐานข้อมูลทั่วไป?
               </span>
-              <p className="text-ink-muted leading-relaxed text-[11px]">
+              <p className="text-ink-muted leading-relaxed text-xs sm:text-sm">
                 เพราะไม่มีการใช้ <code>SELECT ... FOR UPDATE</code> ที่ต้องรอคิว Disk I/O และไม่มีการเกิด Deadlock บนระบบ เอนจิน Couchbase ตรวจสอบเลข 64-bit CAS ในระดับ Register Memory ของ CPU โดยตรง
               </p>
             </div>
@@ -184,25 +184,25 @@ export const CasLifecycleDiagram: React.FC = () => {
       </div>
 
       {/* Visual Sequence Comparison: Winner vs Loser */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
         {/* Winner Scenario */}
-        <div className="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-2">
-          <div className="flex items-center space-x-2 text-emerald-800 font-semibold">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+        <div className="p-5 rounded-xl border border-emerald-200 bg-emerald-50/50 space-y-2">
+          <div className="flex items-center space-x-2 text-emerald-900 font-bold">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600" />
             <span>คำขอผู้ชนะ (Request A - Winner)</span>
           </div>
-          <p className="text-emerald-950 text-xs leading-relaxed">
+          <p className="text-emerald-950 text-xs sm:text-sm leading-relaxed">
             CAS Token ที่ส่งมา (173820918290001) ตรงกับใน Memory &rarr; ทำการบันทึกสถานะเป็น <code>HELD</code> ทันที พร้อมออก CAS ใหม่เป็น <code>173820918290002</code> และเริ่มนับถอยหลัง TTL 300s
           </p>
         </div>
 
         {/* Loser Scenario */}
-        <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-2">
-          <div className="flex items-center space-x-2 text-amber-800 font-semibold">
-            <AlertCircle className="w-4 h-4 text-amber-600" />
+        <div className="p-5 rounded-xl border border-amber-200 bg-amber-50/50 space-y-2">
+          <div className="flex items-center space-x-2 text-amber-900 font-bold">
+            <AlertCircle className="w-5 h-5 text-amber-600" />
             <span>คำขอที่ตามมา (Request B, C, D... - Losers)</span>
           </div>
-          <p className="text-amber-950 text-xs leading-relaxed">
+          <p className="text-amber-950 text-xs sm:text-sm leading-relaxed">
             CAS Token ที่ส่งมา (173820918290001) ไม่ตรงกับระบบอีกต่อไป &rarr; ถูกตัดทิ้งทันทีด้วย <code>CasMismatchError</code> ภายใน 0.8 ms ผู้ใช้ทราบผลทันทีว่าที่นั่งถูกจองแล้ว ปลอดภัย 100%
           </p>
         </div>

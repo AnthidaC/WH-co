@@ -37,7 +37,7 @@ export const ArchitectureHeader: React.FC<ArchitectureHeaderProps> = ({
 }) => {
   const sections = [
     { id: "whatis", label: "00 ทำความรู้จัก Couchbase", icon: "Couchbase" },
-    { id: "diagram", label: "01 แผนผังภาพรวม (Diagram)", icon: "Topology" },
+    { id: "diagram", label: "01 ผัง ER Diagram (ERD)", icon: "Topology" },
     { id: "schema", label: "02 โครงสร้าง Schemas", icon: "Schemas" },
     { id: "cas", label: "03 กลไก CAS Concurrency", icon: "CAS" },
     { id: "gsi", label: "04 ดัชนี GSI & Query", icon: "GSI" },

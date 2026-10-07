@@ -47,43 +47,43 @@ export const CollectionSchemaCard: React.FC<CollectionSchemaCardProps> = ({
     switch (tag) {
       case "PK":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-ink text-canvas whitespace-nowrap">
+          <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-ink text-canvas whitespace-nowrap shadow-xs">
             PRIMARY KEY
           </span>
         );
       case "FK":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-blue-50 text-blue-700 border border-blue-200 whitespace-nowrap">
+          <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200 whitespace-nowrap">
             FOREIGN KEY
           </span>
         );
       case "CAS":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-primary-subtle text-primary border border-primary/20 whitespace-nowrap">
+          <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-primary-subtle text-primary border border-primary/20 whitespace-nowrap">
             CAS GUARD
           </span>
         );
       case "TTL":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-amber-50 text-amber-800 border border-amber-200 whitespace-nowrap">
+          <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200 whitespace-nowrap">
             TTL EXPIRY
           </span>
         );
       case "AUDIT":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-surface-soft text-ink-muted border border-hairline whitespace-nowrap">
+          <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-surface-soft text-ink-muted border border-hairline whitespace-nowrap">
             AUDIT
           </span>
         );
       case "GSI":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 whitespace-nowrap">
+          <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 whitespace-nowrap">
             INDEXED
           </span>
         );
       case "ENUM":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-purple-50 text-purple-800 border border-purple-200 whitespace-nowrap">
+          <span className="px-2.5 py-1 rounded text-xs font-mono font-bold bg-purple-50 text-purple-800 border border-purple-200 whitespace-nowrap">
             ENUM
           </span>
         );
@@ -238,19 +238,19 @@ export const CollectionSchemaCard: React.FC<CollectionSchemaCardProps> = ({
         <div className="p-4 sm:p-6">
           {/* Desktop Table View */}
           <div className="hidden md:block overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
+            <table className="w-full text-left text-sm border-collapse">
               <thead>
-                <tr className="border-b border-hairline text-ink-muted font-mono uppercase text-[10px] tracking-wider">
-                  <th className="py-2.5 px-3 font-semibold w-1/4">Field Name</th>
-                  <th className="py-2.5 px-3 font-semibold w-1/5">Data Type</th>
-                  <th className="py-2.5 px-3 font-semibold w-1/6">Role / Tag</th>
-                  <th className="py-2.5 px-3 font-semibold">คำอธิบายมาตรฐานสากล (Description)</th>
+                <tr className="border-b border-hairline text-ink-muted font-mono uppercase text-xs tracking-wider">
+                  <th className="py-3 px-3.5 font-bold w-1/4">Field Name</th>
+                  <th className="py-3 px-3.5 font-bold w-1/5">Data Type</th>
+                  <th className="py-3 px-3.5 font-bold w-1/6">Role / Tag</th>
+                  <th className="py-3 px-3.5 font-bold">คำอธิบายมาตรฐานสากล (Description)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-hairline-soft font-sans">
                 {collection.fields.map((field) => (
                   <tr key={field.name} className="hover:bg-surface-soft/60 transition-colors">
-                    <td className="py-3 px-3 align-top font-mono font-semibold text-ink break-words">
+                    <td className="py-3.5 px-3.5 align-top font-mono font-bold text-sm text-ink break-words">
                       {field.name}
                       {field.required && (
                         <span className="text-primary ml-1 font-bold" title="จำเป็นต้องมี (Required)">
@@ -258,16 +258,16 @@ export const CollectionSchemaCard: React.FC<CollectionSchemaCardProps> = ({
                         </span>
                       )}
                     </td>
-                    <td className="py-3 px-3 align-top font-mono text-[11px] text-ink-body break-words">
-                      <code>{field.type}</code>
+                    <td className="py-3.5 px-3.5 align-top font-mono text-xs text-ink-body break-words">
+                      <code className="bg-surface-soft px-1.5 py-0.5 rounded">{field.type}</code>
                     </td>
-                    <td className="py-3 px-3 align-top">
+                    <td className="py-3.5 px-3.5 align-top">
                       {renderTagBadge(field.tag)}
                     </td>
-                    <td className="py-3 px-3 align-top text-ink-body leading-relaxed break-words">
+                    <td className="py-3.5 px-3.5 align-top text-sm text-ink leading-relaxed break-words">
                       <p>{field.descriptionTh}</p>
                       {field.example !== undefined && field.example !== null && (
-                        <span className="text-[10px] font-mono text-ink-muted mt-1 block">
+                        <span className="text-xs font-mono text-ink-muted mt-1.5 p-1 rounded bg-surface-soft border border-hairline-soft inline-block">
                           ตัวอย่าง: {typeof field.example === "object" ? JSON.stringify(field.example) : String(field.example)}
                         </span>
                       )}
@@ -279,43 +279,35 @@ export const CollectionSchemaCard: React.FC<CollectionSchemaCardProps> = ({
           </div>
 
           {/* Mobile Card List View (Strict Overflow Prevention) */}
-          <div className="md:hidden space-y-3">
+          <div className="md:hidden space-y-3.5">
             {collection.fields.map((field) => (
               <div
                 key={field.name}
-                className="p-3.5 rounded-xl border border-hairline-soft bg-canvas space-y-2 text-xs"
+                className="p-4 rounded-xl border border-hairline-soft bg-canvas space-y-2.5 text-sm"
               >
                 <div className="flex items-center justify-between gap-2 flex-wrap">
-                  <span className="font-mono font-bold text-ink text-sm break-all">
+                  <span className="font-mono font-bold text-ink text-base break-all">
                     {field.name}
                     {field.required && <span className="text-primary ml-1">*</span>}
                   </span>
                   {renderTagBadge(field.tag)}
                 </div>
 
-                <div className="font-mono text-[11px] text-ink-muted bg-surface-soft px-2 py-1 rounded break-all">
+                <div className="font-mono text-xs text-ink-muted bg-surface-soft px-2.5 py-1 rounded break-all">
                   <code>{field.type}</code>
                 </div>
 
-                <p className="text-ink-body leading-relaxed text-xs break-words">
+                <p className="text-ink leading-relaxed text-sm break-words">
                   {field.descriptionTh}
                 </p>
 
                 {field.example !== undefined && field.example !== null && (
-                  <div className="text-[10px] font-mono text-ink-muted pt-1 border-t border-hairline-soft/60 break-all">
+                  <div className="text-xs font-mono text-ink-muted pt-1.5 border-t border-hairline-soft/60 break-all">
                     ตัวอย่าง: {typeof field.example === "object" ? JSON.stringify(field.example) : String(field.example)}
                   </div>
                 )}
               </div>
             ))}
-          </div>
-
-          {/* Footnote on Audit Fields */}
-          <div className="mt-5 p-3 rounded-xl bg-surface-soft border border-hairline-soft flex items-center space-x-2 text-[11px] text-ink-muted">
-            <Info className="w-4 h-4 text-ink-muted shrink-0" />
-            <span className="leading-relaxed">
-              ฟิลด์ทุกเอกสารยึดตามมาตรฐาน <strong>GEMINI.md</strong>: มี <code>_type</code>, <code>createdAt</code>, <code>updatedAt</code>, <code>deletedAt</code> (Soft Delete), <code>createdBy</code>, <code>updatedBy</code> ครบถ้วน 100%
-            </span>
           </div>
         </div>
       )}

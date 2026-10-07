@@ -30,14 +30,14 @@ export const RdbmsComparisonTable: React.FC = () => {
 
       {/* Desktop Comparison Table (Zero Overflow) */}
       <div className="hidden lg:block overflow-x-auto">
-        <table className="w-full text-left text-xs border-collapse">
+        <table className="w-full text-left text-sm border-collapse">
           <thead>
-            <tr className="border-b border-hairline text-ink-muted font-mono uppercase text-[10px] tracking-wider">
-              <th className="py-3 px-4 font-semibold w-1/5">มิติด้านสถาปัตยกรรม</th>
-              <th className="py-3 px-4 font-semibold w-2/5 bg-primary-subtle/30 text-primary">
+            <tr className="border-b border-hairline text-ink-muted font-mono uppercase text-xs tracking-wider">
+              <th className="py-3.5 px-4 font-bold w-1/5">มิติด้านสถาปัตยกรรม</th>
+              <th className="py-3.5 px-4 font-bold w-2/5 bg-primary-subtle/30 text-primary">
                 Couchbase Rush Engine (ระบบของเรา)
               </th>
-              <th className="py-3 px-4 font-semibold w-2/5 text-ink-muted">
+              <th className="py-3.5 px-4 font-bold w-2/5 text-ink-muted">
                 Traditional RDBMS (MySQL / PostgreSQL)
               </th>
             </tr>
@@ -45,18 +45,18 @@ export const RdbmsComparisonTable: React.FC = () => {
           <tbody className="divide-y divide-hairline font-sans">
             {RDBMS_COMPARISONS.map((item, idx) => (
               <tr key={idx} className="hover:bg-surface-soft/60 transition-colors">
-                <td className="py-4 px-4 align-top font-semibold text-ink break-words">
+                <td className="py-4 px-4 align-top font-bold text-ink break-words text-sm">
                   {item.featureTh}
                 </td>
 
-                <td className="py-4 px-4 align-top bg-primary-subtle/10 leading-relaxed text-ink-body break-words border-l border-r border-primary/10">
-                  <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <td className="py-4 px-4 align-top bg-primary-subtle/10 leading-relaxed text-ink break-words border-l border-r border-primary/10">
+                  <div className="flex items-start space-x-2.5">
+                    <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold text-ink block text-xs">
+                      <span className="font-bold text-ink block text-sm">
                         {item.couchbaseWay}
                       </span>
-                      <p className="text-[11px] text-ink-body mt-1 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-ink-muted mt-1.5 leading-relaxed">
                         &rarr; {item.whyCouchbaseWinsTh}
                       </p>
                     </div>
@@ -64,10 +64,10 @@ export const RdbmsComparisonTable: React.FC = () => {
                 </td>
 
                 <td className="py-4 px-4 align-top leading-relaxed text-ink-muted break-words">
-                  <div className="flex items-start space-x-2">
-                    <XCircle className="w-4 h-4 text-ink-muted/70 shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-2.5">
+                    <XCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-medium text-ink-muted block text-xs">
+                      <span className="font-medium text-ink block text-sm">
                         {item.traditionalRdbms}
                       </span>
                     </div>

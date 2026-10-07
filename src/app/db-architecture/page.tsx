@@ -173,7 +173,7 @@ export default function DbArchitecturePage() {
               </span>
               <span className="text-hairline-strong">•</span>
               <h3 className="text-base sm:text-lg font-bold text-ink font-sans">
-                แผนผังภาพรวมความสัมพันธ์และการไหลของข้อมูล (Topology &amp; Flow)
+                แผนผังความสัมพันธ์เอนทิตี (Entity-Relationship Diagram / ERD)
               </h3>
             </div>
             {activeSection !== "diagram" && (
